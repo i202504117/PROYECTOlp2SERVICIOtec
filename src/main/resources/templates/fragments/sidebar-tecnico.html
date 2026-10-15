@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="sidebar">
+
+    <div class="sidebar">
+
+        <div>
+
+            <div class="logo">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h3 class="text-white">TechSolutions</h3>
+
+                <span class="badge-rol">
+                    <i class="fa fa-hard-hat me-1"></i>
+                    Técnico
+                </span>
+            </div>
+
+            <hr class="text-secondary mx-3">
+
+            <nav>
+
+                <a href="/dashboard-tecnico" class="nav-link">
+                    <i class="fa fa-home"></i>
+                    Mi Dashboard
+                </a>
+
+                <a href="/listarClientes" class="nav-link">
+                    <i class="fa fa-users"></i>
+                    Clientes
+                </a>
+
+                
+                <a href="/listarOrdenes" class="nav-link">
+                    <i class="fa fa-clipboard-list"></i>
+                    Órdenes de Servicio
+                </a>
+
+            </nav>
+
+            
+
+        </div>
+
+        <div class="logout-section">
+
+            <div class="text-secondary small mb-2 ps-1">
+                <i class="fa fa-user-circle me-1"></i>
+
+                <span th:text="${nombreUsuario}">
+                    tecnico@techsolutions.com
+                </span>
+            </div>
+
+            <form th:action="@{/logout}" method="post">
+
+                <button type="submit" class="btn-logout">
+                    <i class="fa fa-right-from-bracket"></i>
+                    Cerrar Sesión
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

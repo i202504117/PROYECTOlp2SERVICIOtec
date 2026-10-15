@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+    http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+    name="reporte_ordenes" pageWidth="842" pageHeight="595"
+    orientation="Landscape" columnWidth="782" leftMargin="30" rightMargin="30"
+    topMargin="20" bottomMargin="20">
+
+    <parameter name="TITULO" class="java.lang.String"/>
+
+    <field name="idorden" class="java.lang.Integer"/>
+    <field name="fecha" class="java.sql.Date"/>
+    <field name="equipo" class="java.lang.String"/>
+    <field name="problema" class="java.lang.String"/>
+    <field name="estado" class="java.lang.String"/>
+    <field name="costo" class="java.lang.Double"/>
+    <field name="cliente.nombre" class="java.lang.String"/>
+    <field name="cliente.dni" class="java.lang.Integer"/>
+    <field name="tecnico.nombre" class="java.lang.String"/>
+    <field name="tecnico.especialidad" class="java.lang.String"/>
+    <field name="producto.nombre" class="java.lang.String"/>
+    <field name="producto.precio" class="java.lang.Double"/>
+
+    <variable name="TOTAL_COSTO" class="java.lang.Double" calculation="Sum">
+        <variableExpression><![CDATA[$F{costo}]]></variableExpression>
+    </variable>
+    <variable name="TOTAL_ORDENES" class="java.lang.Integer" calculation="Count">
+        <variableExpression><![CDATA[$F{idorden}]]></variableExpression>
+    </variable>
+
+    <!-- TÍTULO -->
+    <title>
+        <band height="80">
+            <rectangle>
+                <reportElement x="0" y="0" width="782" height="70" backcolor="#0d6efd" mode="Opaque"/>
+            </rectangle>
+            <textField>
+                <reportElement x="0" y="5" width="782" height="40" forecolor="White"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="20" isBold="true"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{TITULO}]]></textFieldExpression>
+            </textField>
+            <textField pattern="dd/MM/yyyy HH:mm">
+                <reportElement x="0" y="45" width="782" height="20" forecolor="#cce5ff"/>
+                <textElement textAlignment="Center">
+                    <font size="10"/>
+                </textElement>
+                <textFieldExpression><![CDATA["Generado el: " + new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+
+    <!-- ENCABEZADO DE COLUMNAS -->
+    <columnHeader>
+        <band height="28">
+            <staticText><reportElement x="0" y="0" width="35" height="28" backcolor="#1a1a2e" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true" forecolor="White" size="9"/></textElement>
+                <text><![CDATA[ID]]></text></staticText>
+
+            <staticText><reportElement x="35" y="0" width="65" height="28" backcolor="#1a1a2e" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true" forecolor="White" size="9"/></textElement>
+                <text><![CDATA[FECHA]]></text></staticText>
+
+            <staticText><reportElement x="100" y="0" width="90" height="28" backcolor="#1a1a2e" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true" forecolor="White" size="9"/></textElement>
+                <text><![CDATA[CLIENTE]]></text></staticText>
+
+            <staticText><reportElement x="190" y="0" width="60" height="28" backcolor="#1a1a2e" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true" forecolor="White" size="9"/></textElement>
+                <text><![CDATA[DNI]]></text></staticText>
+
+            <staticText><reportElement x="250" y="0" width="85" height="28" backcolor="#1a1a2e" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle"><font isBold="true" forecolor="White" size="9"/></textElement>
+                <text><![CDATA[TÉCNICO]]></text></staticText>
